@@ -46,13 +46,7 @@
     -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java5.home>${env.JAVA5_HOME}</java5.home>
-        <java6.home>${env.JAVA6_HOME}</java6.home>
-        <bootclasspath.java5>${java5.home}/lib/rt.jar</bootclasspath.java5>
-        <bootclasspath.java6>${java6.home}/lib/rt.jar</bootclasspath.java6>
-        <bootclasspath.compile>${bootclasspath.java5}</bootclasspath.compile>
-        <bootclasspath.testCompile>${bootclasspath.java6}</bootclasspath.testCompile>
-        <!-- This property is used for dependencies and for the MANIFEST.MF customization -->
+        <maven.compiler.release>17</maven.compiler.release>
         <antlr3.version>3.5.1</antlr3.version>
         <aw1.basedir>${basedir}</aw1.basedir>
     </properties>
@@ -88,7 +82,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.13.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -135,29 +129,9 @@
                         <executions>
                             <execution>
                                 <id>default-compile</id>
-                                <configuration>
-                                    <source>1.5</source>
-                                    <target>1.5</target>
-                                    <compilerArgs>
-                                        <arg>-Xlint</arg>
-                                        <arg>-Xlint:-serial</arg>
-                                        <arg>-bootclasspath</arg>
-                                        <arg>${bootclasspath.compile}</arg>
-                                    </compilerArgs>
-                                </configuration>
                             </execution>
                             <execution>
                                 <id>default-testCompile</id>
-                                <configuration>
-                                    <source>1.6</source>
-                                    <target>1.6</target>
-                                    <compilerArgs>
-                                        <arg>-Xlint</arg>
-                                        <arg>-Xlint:-serial</arg>
-                                        <arg>-bootclasspath</arg>
-                                        <arg>${bootclasspath.testCompile}</arg>
-                                    </compilerArgs>
-                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
@@ -165,7 +139,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-shade-plugin</artifactId>
-                        <version>2.1</version>
+                        <version>3.6.0</version>
                         <inherited>false</inherited>
                         <executions>
                             <execution>
@@ -306,7 +280,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <version>3.13.0</version>
                 <configuration>
                     <sourceDirectory>src</sourceDirectory>
                     <showWarnings>true</showWarnings>
@@ -320,17 +294,9 @@
                 <executions>
                     <execution>
                         <id>default-compile</id>
-                        <configuration>
-                            <source>1.5</source>
-                            <target>1.5</target>
-                        </configuration>
                     </execution>
                     <execution>
                         <id>default-testCompile</id>
-                        <configuration>
-                            <source>1.6</source>
-                            <target>1.6</target>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -374,7 +340,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <!-- override the version inherited from the parent -->
-                <version>2.9.1</version>
+                <version>3.8.0</version>
                 <configuration>
                     <quiet>true</quiet>
                 </configuration>

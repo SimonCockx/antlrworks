@@ -31,6 +31,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.antlr.xjlib.appkit.app;
 
+import org.antlr.xjlib.appkit.app.MacOS.XJApplicationMacOS;
 import org.antlr.xjlib.appkit.document.XJDocument;
 import org.antlr.xjlib.appkit.document.XJDocumentFactory;
 import org.antlr.xjlib.appkit.frame.XJFrame;
@@ -101,7 +102,7 @@ public class XJApplication extends XJObject implements XJApplicationInterface, X
         if(shared == null) {
             if(XJSystem.isMacOS()) {
                 try {
-                    shared = (XJApplication)Class.forName("org.antlr.xjlib.appkit.app.MacOS.XJApplicationMacOS").newInstance();
+                    shared = new XJApplicationMacOS();
                 } catch (Exception e) {
                     e.printStackTrace();
                     System.err.println("XJApplication: cannot instanciate the MacOS application ("+e+")");
